@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "baseUrl": "./",
+    "moduleResolution": "node",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  // "eslintConfig": {
+  //   "root": true,
+  //   "env": {
+  //     "node": true
+  //   },
+  //   "extends": [
+  //     "plugin:vue/essential",
+  //     "eslint:recommended"
+  //   ],
+  //   "parserOptions": {
+  //     "parser": "babel-eslint"
+  //   },
+  //   "rules": {}
+  // },
+  // "browserslist": [
+  //   "> 1%",
+  //   "last 2 versions",
+  //   "not dead"
+  // ]
+}

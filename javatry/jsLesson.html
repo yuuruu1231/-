@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScriptの説明</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <p id="data1"></p>
+    <p id="data2"></p>
+    <p id="data3"></p>
+    <p id="data4"></p>
+    <p id="data5"></p>
+    <p id="data6"></p>
+
+    <script>
+        /*  平均値算出  */
+        const avg = (data) => {
+            return sum(data) / data.length;
+        }
+        const name = 'tanaka'
+        const data = [90, 80, 70, 100];
+
+        const data1 = "お名前＝" + name;
+        const data2 = "平均値＝" + avg(data)
+        const data3 = "合格判定結果＝" + judge(avg(data))
+        const data4 = "合計値＝" + sum(data)
+        const data5 = "最大値＝" + max(data)
+        const data6 = "最小値＝" + min(data)
+
+        document.getElementById("data1").innerHTML = data1
+        document.getElementById("data2").innerHTML = data2
+        document.getElementById("data3").innerHTML = data3
+        document.getElementById("data4").innerHTML = data4
+        document.getElementById("data5").innerHTML = data5
+        document.getElementById("data6").innerHTML = data6
+
+
+        /*  平均値算出  */
+        // function avg(data) {
+        //     return sum(data) / data.length;
+        // }
+
+        /*  合格判定  */
+        function judge(data) {
+            if (data >= 60) {
+                return "passed";
+            } else {
+                return "failed";
+            }
+        }
+
+        /*  合計値算出  */
+        function sum(data) {
+            let dataSum = 0;
+            //方法１
+            // for (i in data) {
+            //     dataSum += data[i];
+            // }
+            // ------------------
+            //方法２
+            // for (i of data) {
+            //     dataSum += i;
+            // }
+            // ------------------
+            //方法３
+            data.forEach(item => {
+                dataSum += item;
+            })
+            return dataSum;
+        }
+
+        /*  最小値算出  */
+        function min(data) {
+            let dataMin = data[0];
+            for (i in data) {
+                if (dataMin > data[i]) {
+                    dataMin = data[i];
+                }
+            }
+            return dataMin;
+        }
+
+        /*  最大算出  */
+        function max(data) {
+            let dataMax = data[0];
+            for (i in data) {
+                if (dataMax < data[i]) {
+                    dataMax = data[i];
+                }
+            }
+            return dataMax;
+        }
+    </script>
+</body>
+
+</html>

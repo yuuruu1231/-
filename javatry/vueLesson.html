@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScriptの説明</title>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <p v-for="(item,idx) in result" :key="idx">{{item}}</p>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+        createApp({
+            data() {
+                return {
+                    result: []
+                }
+            },
+            mounted() {
+                this.init()
+            },
+            methods: {
+                init() {
+                    const name = 'tanaka';
+                    const data = [90, 80, 70, 100];
+
+                    this.result[0] = "お名前＝" + name;
+                    this.result[1] = "平均値＝" + this.avg(data)
+                    this.result[2] = "合格判定結果＝" + this.judge(this.avg(data))
+                    this.result[3] = "合計値＝" + this.sum(data)
+                    this.result[4] = "最大値＝" + this.max(data)
+                    this.result[5] = "最小値＝" + this.min(data)
+                },
+                /*  平均値算出  */
+                avg(data) {
+                    return this.sum(data) / data.length;
+                },
+
+                /*  合格判定  */
+                judge(data) {
+                    if (data >= 60) {
+                        return "passed";
+                    } else {
+                        return "failed";
+                    }
+                },
+
+                /*  合計値算出  */
+                sum(data) {
+                    let dataSum = 0;
+                    for (i in data) {
+                        dataSum += data[i];
+                    }
+                    return dataSum;
+                },
+
+                /*  最小値算出  */
+                min(data) {
+                    let dataMin = data[0];
+                    for (i in data) {
+                        if (dataMin > data[i]) {
+                            dataMin = data[i];
+                        }
+                    }
+                    return dataMin;
+                },
+
+                /*  最大算出  */
+                max(data) {
+                    let dataMax = data[0];
+                    for (i in data) {
+                        if (dataMax < data[i]) {
+                            dataMax = data[i];
+                        }
+                    }
+                    return dataMax;
+                }
+            }
+        }).mount('#app')
+
+
+    </script>
+</body>
+
+</html>
